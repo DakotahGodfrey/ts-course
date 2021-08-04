@@ -4,7 +4,15 @@ const drink = { color: 'brown', carbonated: true, sugar: 40 };
 // type alias;
 type Drink = [string, boolean, number];
 
-const pepsi: Drink = ['brown', true, 40];
+const pepsiOne: Drink = ['brown', true, 40];
 
 let sprite: Drink;
 sprite[0] = 'clear';
+
+// con of tuple not great for representing all types of data
+const carSpecs: [number, number] = [400, 3354];
+
+const carSpecsObject = {
+  horsepower: 454,
+  weightInLBS: 3354,
+};
