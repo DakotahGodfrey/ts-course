@@ -1,0 +1,102 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LinkedList = void 0;
+var _1 = require(".");
+var Node = /** @class */ (function () {
+    function Node(data) {
+        this.data = data;
+        this.next = null;
+    }
+    return Node;
+}());
+var LinkedList = /** @class */ (function (_super) {
+    __extends(LinkedList, _super);
+    function LinkedList() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.head = null;
+        return _this;
+    }
+    LinkedList.prototype.add = function (data) {
+        var node = new Node(data);
+        if (!this.head) {
+            this.head = node;
+            return;
+        }
+        var tail = this.head;
+        while (tail.next) {
+            tail = tail.next;
+        }
+        tail.next = node;
+    };
+    Object.defineProperty(LinkedList.prototype, "length", {
+        get: function () {
+            if (!this.head) {
+                return 0;
+            }
+            var length = 1;
+            var node = this.head;
+            while (node.next) {
+                length++;
+                node = node.next;
+            }
+            return length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    LinkedList.prototype.at = function (index) {
+        if (!this.head) {
+            throw new Error("Can not access node at " + index + ": Linked list is empty. ");
+        }
+        var pointer = 0;
+        var node = this.head;
+        while (node) {
+            if (pointer === index) {
+                return node;
+            }
+            pointer++;
+            node = node.next;
+        }
+        throw new Error('index out of bounds.');
+    };
+    LinkedList.prototype.compare = function (leftIndex, rightIndex) {
+        if (!this.head) {
+            throw new Error('Empty list.');
+        }
+        return this.at(leftIndex).data > this.at(rightIndex).data;
+    };
+    LinkedList.prototype.swap = function (leftIndex, rightIndex) {
+        if (this.compare(leftIndex, rightIndex)) {
+            var leftNode = this.at(leftIndex).data;
+            this.at(leftIndex).data = this.at(rightIndex).data;
+            this.at(rightIndex).data = leftNode;
+        }
+    };
+    LinkedList.prototype.print = function () {
+        if (!this.head) {
+            return;
+        }
+        var node = this.head;
+        while (node) {
+            console.log(node.data);
+            node = node.next;
+        }
+    };
+    return LinkedList;
+}(_1.BubbleSorter));
+exports.LinkedList = LinkedList;
