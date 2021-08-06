@@ -13,7 +13,7 @@ interface Analyzer {
 }
 
 interface OutputTarget {
-  print(report: string): void;
+  print(report: string, team: string): void;
 }
 
 export { Match, Analyzer, OutputTarget };

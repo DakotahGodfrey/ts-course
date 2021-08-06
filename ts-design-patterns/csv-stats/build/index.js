@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Analyzers_1 = require("./classes/Analyzers");
 var FootballMatches_1 = require("./classes/FootballMatches");
-var Reporters_1 = require("./classes/Reporters");
 var Sumarry_1 = require("./classes/Sumarry");
 var matches = new FootballMatches_1.FootballMatches('football.csv');
 matches.read();
-var manUnitedSummary = new Sumarry_1.Summary(new Analyzers_1.WinsAnalysis('Man United'), new Reporters_1.ConsoleReport());
-manUnitedSummary.genrateAndPrintReport(matches.data);
+Sumarry_1.Summary.winsAnalysisWithHtmlReport('Man United', matches.data);
+Sumarry_1.Summary.winsAnalysisWithHtmlReport('Man City', matches.data);
+Sumarry_1.Summary.winsAnalysisWithHtmlReport('PSG', matches.data);
+Sumarry_1.Summary.winsAnalysisWithHtmlReport('Crystal Palace', matches.data);

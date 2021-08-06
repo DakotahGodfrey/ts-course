@@ -1,3 +1,3 @@
 import { ConsoleReport } from './ConsoleReport';
-
-export { ConsoleReport };
+import { HTMLReport } from './HTMLReport';
+export { ConsoleReport, HTMLReport };
